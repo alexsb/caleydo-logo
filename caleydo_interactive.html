@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D3 Select</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+</head>
+<body>
+
+<svg height="1000" width="800">
+    <g transform="translate(20, 20)">
+        <polygon id="red" fill="#EE2329" points="63.2,66 120.3,33 63.2,0 	"/>
+        <polygon id="orange" fill="#F47D20" points="59.2,0 2,33 59.2,66 	"/>
+        <polygon id="yellow" fill="#FABC15" points="57.2,69.5 0,36.5 0,102.5 	"/>
+        <polygon id="green" fill="#1BA64E" points="59.2,72.9 2,105.9 59.2,138.9 	"/>
+        <polygon id="blue" fill="#10ACDF" points="63.2,138.9 120.3,105.9 63.2,72.9 	"/>
+    </g>
+</svg>
+
+<script>
+
+    var animationTime = 200;
+    var triangles = [["#red", "10, -10"], ["#orange", "-10, -10"], ["#yellow", "-10, 0"], ["#green", "-10, 10"], ["#blue", "10, 10"]];
+
+    triangles.forEach(function (triangle) {
+
+        d3.select("svg").select(triangle[0]).on("mouseover", function () {
+
+            translateTriangle(triangle)
+        })
+                .on("click", function () {
+                    translateAll();
+                })
+    });
+
+
+    function translateTriangle(triangle) {
+
+        d3.select("svg").select(triangle[0]).transition()
+                .duration(animationTime).ease("cubicInOut")
+                .attr("transform", "translate(" + triangle[1] + ")")
+                .transition()
+                .duration(animationTime)
+                .attr("transform", "translate(0, 0)")
+    }
+
+    function translateAll() {
+        var timeOut = 0
+        triangles.forEach(function(triangle){
+            setTimeout(function(){
+                translateTriangle(triangle)
+            },  timeOut);
+            timeOut += animationTime /2;
+            console.log(timeOut);
+        });
+
+    }
+</script>
+</body>
