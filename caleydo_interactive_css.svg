@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-	 width="140.522px" height="148.944px"
+	 width="160px" height="160px"
 	 xml:space="preserve">
   <style type="text/css" >
   <![CDATA[
@@ -64,44 +64,34 @@
 
                }}
 
-
-        <!--polygon  {-->
-           <!--animation-duration: 200ms;-->
-          <!--animation-direction: alternate;-->
-          <!--animation-iteration-count:2 ;-->
-
-          <!--}-->
-
-          #red:hover{
+        polygon{
+            animation-duration: 200ms;
             animation-direction: alternate;
             animation-iteration-count:2 ;
+        }
+
+
+        #group:hover > #red {
+           animation-name: red_move;
             animation-delay: 0ms;
-            animation-name: red_move;
-            fill: #000000;
 
-          }
-
-
-        #red {
-         animation-name: red_move;
-            animation-delay: 0ms; }
-       #orange {
+         }
+        #group:hover > #orange {
         animation-name: orange_move;
-            animation-delay: 150ms; }
-        #yellow {
+            animation-delay: 50ms; }
+        #group:hover >   #yellow {
          animation-name: yellow_move;
-            animation-delay: 300ms; }
-        #green {
+            animation-delay: 100ms; }
+        #group:hover > #green {
           animation-name: green_move;
-            animation-delay: 450ms; }
-            #blue {
+            animation-delay: 150ms; }
+        #group:hover >      #blue {
           animation-name: blue_move;
-            animation-delay: 600ms; }
-
+            animation-delay: 200ms; }
 
   ]]>
   </style>
-  <g transform="translate(10, 10)">
+  <g id="group" transform="translate(20, 10)">
    <polygon id="red" fill="#EE2329" points="63.2,66 120.3,33 63.2,0 	"/>
         <polygon id="orange" fill="#F47D20" points="59.2,0 2,33 59.2,66 	"/>
         <polygon id="yellow" fill="#FABC15" points="57.2,69.5 0,36.5 0,102.5 	"/>
